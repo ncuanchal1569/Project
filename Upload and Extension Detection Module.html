@@ -1,0 +1,88 @@
+<html>
+<head>
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0" />
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader(); 
+
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+function checkFileExtension() {
+            fileName = document.querySelector('#file').value;
+  
+            regex = new RegExp('[^.]+$');
+  
+            extension = fileName.match(regex);
+            document.querySelector('.output')
+                                     .textContent = extension;
+	}
+
+</script>
+<style>
+body
+{
+ width:100%;
+ margin:0 auto;
+ padding:0px;
+ font-family:helvetica;
+ background-color:lightblue;
+}
+
+.test {
+ text-align:center;
+ margin:0 auto;
+ padding:50px;
+ width:500px;
+ ;
+}      
+.test img{
+            
+			width: 100%;
+            transition: 0.5s all ease-in-out;
+			 padding:0px
+}
+ .test:hover img{
+            transform: scale(1.2);
+ }
+.test2
+{
+ 
+ max-width:400px;
+ 
+ 
+  
+}
+h1 {
+            color: blue;
+			align:middle;
+    }
+</style>
+</head>
+<body>
+<h1> 
+        Extension Detection and Zoom Utility  
+    </h1>
+  
+    <h3> 
+        Validation of file type 
+    </h3>
+ <div class="test">
+        
+ <input type="file" id="file" accept="".jpg,.jpeg,.gif,.png,.pdf"/" align="left" onchange="preview_image(event)">
+ <input type="button" value="Check Extension" align="left" onclick="checkFileExtension();"/>
+    <p>The file extension is: <span class="output"></span></p>
+ <div class="test2">
+ <img id="output_image"/ align="left">
+    </div>
+</div>
+</body>
+</html>
